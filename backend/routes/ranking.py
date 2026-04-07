@@ -12,7 +12,10 @@ def rank_candidates():
     results = []
 
     for resume in RESUMES:
-        result = match_candidate(resume["text"], job_description)
+        # Extract structured data if available
+        resume_data = resume.get("structured_data", None)
+        
+        result = match_candidate(resume["text"], job_description, resume_data=resume_data)
 
         summary = f"{len(result['matched_skills'])} skills matched, {result['experience']} years experience."
 

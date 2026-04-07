@@ -1,4 +1,5 @@
 import re
+from skills import SKILL_DB
 
 def chunk_text(text, chunk_size=150):
     words = text.split()
@@ -8,6 +9,18 @@ def chunk_text(text, chunk_size=150):
     ]
 
 
+
+def extract_skills(text):
+    text = text.lower()
+
+    found = []
+    for skill in SKILL_DB:
+        if skill in text:
+            found.append(skill)
+
+    return list(set(found))
+
+
 def extract_keywords(text):
-    words = re.findall(r'\b[A-Za-z\+\#\.]{2,}\b', text)
-    return list(set([w.lower() for w in words]))[:30]
+    """Alias to extract skills/keywords from JD text."""
+    return extract_skills(text)

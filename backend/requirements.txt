@@ -7,3 +7,11 @@ Pillow
 sentence-transformers
 scikit-learn
 rapidfuzz
+opencv-python
+numpy
+python-dateutil
+torch
+torchvision
+flask-jwt-extended
+mysql-connector-python
+

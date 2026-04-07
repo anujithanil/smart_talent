@@ -1,3 +1,5 @@
+from services.jd_processor import extract_keywords
+
 def generate_justification(result, jd_text):
     skills = result["matched_skills"]
     years = result["experience"]
@@ -25,3 +27,8 @@ def detect_hidden_gem(similarity, skill_score):
     if similarity > 0.7 and skill_score < 0.3:
         return True
     return False
+def generate_interview_guide(result, resume_text, jd_text):
+    keywords = extract_keywords(jd_text)
+    guide = f"Focus on discussing your experience with {', '.join(keywords[:5])} and how it relates to the job requirements."
+    
+    return guide
